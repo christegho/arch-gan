@@ -1,4 +1,4 @@
-Step by step guide fo rcreating your own point cloud and mesh dataset for training machine learning models.
+Step by step guide fo creating your own point cloud and mesh dataset for training unsupervised machine learning models.
 
 The aim is to get .binvox files which is the most common format used so far for creating machine learning models. More details on .binvox will come later. The .binvox open software allows to transform .ply meshes into .binvox. This tutorial will outline the steps to get .ply meshes from point clouds, which can then be transformed into .binvox files.
 
@@ -7,17 +7,17 @@ The aim is to get .binvox files which is the most common format used so far for 
 
 2. This tutorial will be based off an example for the DURAARK Datasets http://duraark.eu/data-repository/. The files in this dataset are either in IFC format or E57 formats.
 
-I suggest you download and extract all folders and place all .ifc files in one folder (call it IFC) and all E57 (call it E57) files in another.Discard all other file formats.
+I suggest you download and extract all folders and place all .ifc files in one folder (call it IFC) and all E57 (call it E57) files in another.
 
 ## File Structure
 I suggest you create the following folders to store your data:
 
-IFC: for original .ifc files.
-E57: for original .e57 files.
-OBJ: for .obj meshes we will create for .ifc files.
-PCD: for .pcd point cloud files which are obtained from .e57 files.
-PLY_IFC: for .ply meshes that we will convert from .obj meshes (which are obtained from the ifc files).
-PLY_E57: for .ply_e
+* IFC: for original .ifc files.
+* E57: for original .e57 files.
+* OBJ: for .obj meshes we will create for .ifc files.
+* PCD: for .pcd point cloud files which are obtained from .e57 files.
+* PLY_IFC: for .ply meshes that we will convert from .obj meshes (which are obtained from the ifc files).
+* PLY_E57: for .ply_e
 
 ## IFC files
 1. Transform your files to load into CloudCompare:
