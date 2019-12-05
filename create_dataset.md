@@ -12,26 +12,29 @@ I suggest you download and extract all folders and place all .ifc files in one f
 ## File Structure
 I suggest you create the following folders to store your data:
 
-* IFC: for original .ifc files.
-* E57: for original .e57 files.
-* OBJ: for .obj meshes we will create for .ifc files.
-* PCD: for .pcd point cloud files which are obtained from .e57 files.
-* PLY_IFC: for .ply meshes that we will convert from .obj meshes (which are obtained from the ifc files).
-* PLY_E57: for .ply_e
+* `IFC`: for original .ifc files.
+* `E57`: for original .e57 files.
+* `OBJ`: for .obj meshes we will create for .ifc files.
+* `PCD`: for .pcd point cloud files which are obtained from .e57 files.
+* `PLY_IFC`: for .ply meshes that we will convert from .obj meshes (which are obtained from the ifc files).
+* `PLY_E57`: for .ply_e
 
 ## IFC files
-1. Transform your files to load into CloudCompare:
+1. Download the IFC zip file and extract all the content in the `IFC` folder.
+2. Transform your files to load into CloudCompare:
 CloudCompare can load many open point cloud formats (ASCII, LAS, E57, etc.) as well as some manufacturer's formats (DP, Riegl, FARO, etc.). It can also load triangular meshes (OBJ, PLY, STL, FBX, etc.) and a few polylines or polygon formats (SHP, DXF, etc.). Some SfM formats are aslo supported (Bundler, Photoscan PSZ, etc.).
 
 CloudCompare does not accept IFC files. To transform IFC files into another format, you can use this 3D Model file Converter available online: https://www.meshconvert.com.
 
-Choose .obj as the output format. 
+3. Choose .obj as the output format. 
 
-Click start to convert the file. Some might not work and you can ignore them. Download all the converted files and store them into the same place (OBJ folder). Unfortunately, it is only possible to get meshes out of .ifc files. I could not find any other software to get point clouds instead.
+4. Click start to convert the file. Some might not work and you can ignore them. Download all the converted files and store them into the same place (`OBJ` folder). Unfortunately, it is only possible to get meshes out of .ifc files. I could not find any other software to get point clouds instead.
 
-2. In CloudCompare, open File -> Open -> Select the .obj file to open.
-Select the .obj file you just opened and save it as a .ply file in PLY_IFC via File -> Save, then select file type as `PLY mesh (*.ply)`.
-You will get a prompt tp choose a formtat for the file: Choose ASCII.
+5. Open the .obj file in CloudCompare: open File -> Open -> Select the .obj file to open.
+
+6. Select the .obj file you just opened and save it as a .ply file in `PLY_IFC` via File -> Save, then select file type as `PLY mesh (*.ply)`.
+
+7. You will get a prompt tp choose a formtat for the file: Choose ASCII.
 
 Note: I tried other converters that convert the .ifc files into .ply meshes immediately but many of conversions were not entirely correct and had misplaced part of the structures.
  
@@ -42,11 +45,12 @@ E57 files can be loaded in Cloud Compare without connversions. These steps shoul
 
 We will create subsampled point cloud files, cropped point clouds and meshes from these Files.
 
+0. Download the E57 file and unzip the content of the folder in the `E57` folder.
 1. Load the point cloud in CloudCompare via File -> Open.
 The point cloud might contain many scans.
 For simplicity, we will treat each scan as a seperate structure.
 
-2. Subsmaple the structure: When you click on a scan, you will find Properties in the bottom left of CloudCompare. Under the cloud section, you will find the number of points in the scan. If this number if higher than 600000 points, it is better to subsample it. This is important for training machine learning models, and loading files for subsequent steps.
+2. Subsample the structure: When you click on a scan, you will find Properties in the bottom left of CloudCompare. Under the cloud section, you will find the number of points in the scan. If this number if higher than 600000 points, it is better to subsample it. This is important for training machine learning models, and loading files for subsequent steps.
 
 To subsample a file, Click Edit -> Subsample. If you cannot select Subsample, it means you did not sleect a scan, but rather a structure with multiple scans.
 
