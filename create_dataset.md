@@ -46,28 +46,29 @@ E57 files can be loaded in Cloud Compare without connversions. These steps shoul
 We will create subsampled point cloud files, cropped point clouds and meshes from these Files.
 
 0. Download the E57 file and unzip the content of the folder in the `E57` folder.
+
 1. Load the point cloud in CloudCompare via File -> Open.
 The point cloud might contain many scans.
 For simplicity, we will treat each scan as a seperate structure.
 
-2. Subsample the structure: When you click on a scan, you will find Properties in the bottom left of CloudCompare. Under the cloud section, you will find the number of points in the scan. If this number if higher than 600000 points, it is better to subsample it. This is important for training machine learning models, and loading files for subsequent steps.
+2.a. Subsample the structure: When you click on a scan, you will find Properties in the bottom left of CloudCompare. Under the cloud section, you will find the number of points in the scan. If this number if higher than 600000 points, it is better to subsample it. This is important for training machine learning models, and loading files for subsequent steps.
 
-To subsample a file, Click Edit -> Subsample. If you cannot select Subsample, it means you did not sleect a scan, but rather a structure with multiple scans.
+2.b. To subsample a file, Click Edit -> Subsample. If you cannot select Subsample, it means you did not sleect a scan, but rather a structure with multiple scans.
 
-A prompt for subsampling will pop out: choose the Octree method and subdivision level of 15. If you do not get a less than 600000 points file after the subsampling, try a different subdivision level.
+2.c. A prompt for subsampling will pop out: choose the Octree method and subdivision level of 15. If you do not get a less than 600000 points file after the subsampling, try a different subdivision level.
 
 Alternatively, choose the random method and set the remaining points to 600000.
 
 More info on how to subsample here: https://www.cloudcompare.org/doc/wiki/index.php?title=Edit%5CSubsample.
 
-3. Save the subsampled point cloud as a PCD file: Click File -> Save. Choose the PCD folder and select file type as `Point Cloud Library (*.pcd)`.
+3. Save the subsampled point cloud as a `PCD` file: Click File -> Save. Choose the PCD folder and select file type as `Point Cloud Library (*.pcd)`.
 
 4. Create a mesh from the point cloud. First make sure you have selected a scan rather than a group of scans.
 You can either select the original or subsampled scan.
 Click Edit -> Mesh -> Delaunay 2.5D (best fitting plane).
 You will get a prompt for the triangulation: choose Max edge length as 1.0.
 
-5. Save the mesh in the mesh folder PLY_E57 via File -> Save, then select file type as `PLY mesh (*.ply)`.
+5. Save the mesh in the mesh folder `PLY_E57` via File -> Save, then select file type as `PLY mesh (*.ply)`.
 You will get a prompt tp choose a formtat for the file: Choose ASCII.
 
 6. Crop the scan: to augment our dataset with more data points, we crop a structure. It is important to crop the structure in a way that makes sense visually. Whatever part you crop, make sure that part makes sense on its own.
